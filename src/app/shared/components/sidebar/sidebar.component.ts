@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { GifsService } from '../../../gifs/services/gifs.service';
 
 @Component({
@@ -7,10 +7,21 @@ import { GifsService } from '../../../gifs/services/gifs.service';
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent {
+
+  @Output()
+  public onEmitTag: EventEmitter<string> = new EventEmitter()
+
+
   constructor(private gifsService: GifsService){}
 
   get tags(){
     return this.gifsService.tagsHistory;
+  }
+
+  emitTag(tag: string): void{
+    console.log(tag)
+    this.onEmitTag.emit(tag)
+
   }
 
 }
