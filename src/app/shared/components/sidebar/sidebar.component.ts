@@ -19,8 +19,7 @@ export class SidebarComponent {
   }
 
   emitTag(tag: string): void{
-    console.log(tag)
-    this.onEmitTag.emit(tag)
+    this.gifsService.searchTag(tag)
 
   }
 
